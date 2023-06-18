@@ -7,14 +7,16 @@
 # @lc code=start
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
-        intervals.append(newInterval)
-        res = []
-        for i in sorted(intervals, key=lambda x:x.start):
-            if res and res[-1].end >= i.start:
-                res[-1].end = max(res[-1].end, i.end)
+        s, e = newInterval[0], newInterval[1]
+        left, right = [], []
+        for i in intervals:
+            if i[1] < s:
+                left += i,
+            elif i[0] > e:
+                right += i,
             else:
-                res.append(i)
-        return res
-        
+                s = min(s, i[0])
+                e = max(e, i[1])
+        return left + [[s, e]] + right
 # @lc code=end
 
