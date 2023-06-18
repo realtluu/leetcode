@@ -7,6 +7,8 @@
 # @lc code=start
 class Solution:
     def reverse(self, x: int) -> int:
-        
-# @lc code=end
+        s = (x > 0) - (x < 0)
+        r = int(str(x*s)[::-1])
+        return s*r * (r < 2**31)
 
+# @lc code=end
