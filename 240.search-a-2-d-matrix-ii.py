@@ -59,6 +59,20 @@
 # @lc code=start
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        rows = len(matrix)
+        cols = len(matrix[0])
+        row = 0
+        col = cols - 1  # Start from the top-right corner
+
+        while row < rows and col >= 0:
+            if matrix[row][col] == target:
+                return True
+            elif matrix[row][col] < target:
+                row += 1  # Eliminate the current row
+            else:
+                col -= 1  # Eliminate the current column
+
+        return False  # Target not found
         
 # @lc code=end
 
